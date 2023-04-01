@@ -1,0 +1,15 @@
+{
+  "name": "interactive-comments-section-main",
+  "version": "1.0.0",
+  "description": "![Design preview for the Interactive comments section coding challenge](./design/desktop-preview.jpg)",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "author": "Manish Mandal",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.8.3"
+  }
+}
