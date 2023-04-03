@@ -22,7 +22,7 @@ header {
 
 
 .main {
-    width: min(90%, 874px);
+    width: min(90%, 755px);
     height: 100vh;
     margin-block: clamp(2rem, 0.944rem + 4.507vw, 5rem);
 }
@@ -41,6 +41,7 @@ ul {
     &-content {
         color: var.$Grayish-Blue;
         padding-block: clamp(1rem, 0.857rem + 0.714vw, 1.5rem);
+        grid-column: 1/-1;
     }
 }
 .comments-container__user {
@@ -49,10 +50,10 @@ ul {
     column-gap: 1rem;
     row-gap: .5rem;
     align-items: center;
-
+    grid-column: 1/-1;
     &-dp {
         display: block;
-        max-width: 40px;
+        max-width: 30px;
     }
 
     &-name {
@@ -63,4 +64,42 @@ ul {
     &-time {
         color: var.$Grayish-Blue;
     }
+}
+
+.comments-container__section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    &__vote {
+        display: flex;
+        background-color: var.$Light-gray;
+        width: fit-content;
+        border-radius: 8px;
+        button {
+            all: unset;
+            color: var.$Light-grayish-blue;
+            font-weight: 700;
+            padding-block: .5rem;
+            padding-inline: .8rem;
+        }
+        .vote {
+            color: var.$Moderate-blue;
+            font-weight: 500;
+            padding-block: .5rem;
+        }
+    }
+    &__reply {
+        grid-column: 3/4;
+        justify-self: end;
+        align-self: center;
+        button {
+            all: unset;
+            color: var.$Moderate-blue;
+            font-weight: 500;
+            .reply-logo {
+                width: 12px;
+                margin-inline-end: .2rem;
+            }
+        }
+    }
+    
 }
