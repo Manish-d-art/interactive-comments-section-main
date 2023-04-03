@@ -20,11 +20,10 @@ header {
     }
 }
 
-
 .main {
-    width: min(90%, 755px);
+    width: min(90%, 720px);
     height: 100vh;
-    margin-block: clamp(2rem, 0.944rem + 4.507vw, 5rem);
+    margin-block: clamp(2rem, 1.714rem + 1.429vw, 3rem);
 }
 
 ul {
@@ -42,6 +41,11 @@ ul {
         color: var.$Grayish-Blue;
         padding-block: clamp(1rem, 0.857rem + 0.714vw, 1.5rem);
         grid-column: 1/-1;
+        line-height: 1.5;
+        @media (min-width: 550px) {
+            grid-column: 2/-1;
+            padding-block: clamp(1rem, 0.857rem + 0.714vw, 1.5rem) 0;
+        }
     }
 }
 .comments-container__user {
@@ -51,9 +55,12 @@ ul {
     row-gap: .5rem;
     align-items: center;
     grid-column: 1/-1;
+    @media (min-width: 550px) {
+        grid-column: 2/3;
+    }
     &-dp {
         display: block;
-        max-width: 30px;
+        max-width: 33px;
     }
 
     &-name {
@@ -69,34 +76,56 @@ ul {
 .comments-container__section {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    @media (min-width: 550px) {
+        grid-template-columns: min-content 1fr max-content;
+        grid-template-rows: repeat(2, min-content);
+        grid-column-gap: 1.5rem;
+    }
     &__vote {
         display: flex;
         background-color: var.$Light-gray;
         width: fit-content;
         border-radius: 8px;
+        @media (min-width: 550px) {
+            flex-direction: column;
+            grid-row: 1/-1;
+            max-height: 6.3rem;
+        }
         button {
             all: unset;
             color: var.$Light-grayish-blue;
             font-weight: 700;
             padding-block: .5rem;
             padding-inline: .8rem;
+            font-size: 1.3rem;
+            text-align: center;
         }
         .vote {
             color: var.$Moderate-blue;
             font-weight: 500;
-            padding-block: .5rem;
+            padding-block: .65rem;
+            padding-inline: .5rem;
+            font-size: 1rem;
+            text-align: center;
+            @media (min-width: 550px) {
+                padding-block: 0rem;
+            }
         }
     }
     &__reply {
         grid-column: 3/4;
         justify-self: end;
         align-self: center;
+        @media (min-width: 550px) {
+            grid-row: 1/2;
+        }
         button {
             all: unset;
             color: var.$Moderate-blue;
             font-weight: 500;
+            font-size: 1rem;
             .reply-logo {
-                width: 12px;
+                width: 14px;
                 margin-inline-end: .2rem;
             }
         }
