@@ -21,8 +21,7 @@ header {
 }
 
 .main {
-    width: min(90%, 720px);
-    height: 100vh;
+    width: min(90%, 725px);
     margin-block: clamp(2rem, 1.714rem + 1.429vw, 3rem);
 }
 
@@ -31,6 +30,7 @@ ul {
         list-style-type: none;
         background-color: var.$Very-light-gray;
         border-radius: 5px;
+        margin-block: clamp(1rem, 0.921rem + 0.421vw, 1.3rem);
     }
 }
 
