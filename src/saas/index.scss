@@ -5,7 +5,6 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Rubik', sans-serif;
-    
 }
 
 body {
@@ -44,7 +43,7 @@ ul {
             color: var.$Moderate-blue;
             font-weight: 500;
         }
-        @media (min-width: 550px) {
+        @media (min-width: 628px) {
             grid-column: 2/-1;
             padding-block: clamp(1rem, 0.857rem + 0.714vw, 1.5rem) 0;
         }
@@ -57,7 +56,7 @@ ul {
     row-gap: .5rem;
     align-items: center;
     grid-column: 1/-1;
-    @media (min-width: 550px) {
+    @media (min-width: 628px) {
         grid-column: 2/3;
     }
     &-dp {
@@ -78,9 +77,9 @@ ul {
 .comments-container__section, .main__replies {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    background-color: var.$Very-light-gray;
+    background-color: var.$White;
     border-radius: 8px;
-    @media (min-width: 550px) {
+    @media (min-width: 628px) {
         grid-template-columns: min-content 1fr max-content;
         grid-template-rows: repeat(2, min-content);
         grid-column-gap: 1.5rem;
@@ -90,7 +89,7 @@ ul {
         background-color: var.$Light-gray;
         width: fit-content;
         border-radius: 8px;
-        @media (min-width: 550px) {
+        @media (min-width: 628px) {
             flex-direction: column;
             grid-row: 1/-1;
             max-height: 6.3rem;
@@ -103,6 +102,13 @@ ul {
             padding-inline: .8rem;
             font-size: 1.3rem;
             text-align: center;
+            cursor: pointer;
+            &:hover {
+                color: var.$Moderate-blue;
+            }
+            &:active {
+                color: var.$Moderate-blue;
+            }
         }
         .vote {
             color: var.$Moderate-blue;
@@ -111,26 +117,43 @@ ul {
             padding-inline: .5rem;
             font-size: 1rem;
             text-align: center;
-            @media (min-width: 550px) {
+            @media (min-width: 628px) {
                 padding-block: 0rem;
             }
         }
     }
-    &__reply {
-        grid-column: 3/4;
+    &__replyNmodify {
+        grid-column: 2/4;
         justify-self: end;
         align-self: center;
-        @media (min-width: 550px) {
+        display: flex;
+        @media (min-width: 628px) {
             grid-row: 1/2;
+            grid-column: 3/4;
+        }
+        .delete-btn {
+            margin-inline-start: .5rem;
         }
         button {
             all: unset;
             color: var.$Moderate-blue;
             font-weight: 500;
             font-size: 1rem;
+            cursor: pointer;
+            text-transform: capitalize;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: end;
             .reply-logo {
                 width: 14px;
                 margin-inline-end: .2rem;
+            }
+            .edit-icon {
+                margin-inline: 1rem .5rem;
+            }
+            .delete-icon {
+                margin-inline-end: .5rem;
             }
         }
     }
@@ -140,7 +163,70 @@ ul {
 .main__replies-container {
     padding-inline-start: clamp(1rem, 0.5rem + 2.133vw, 2.5rem);
     border-inline-start: 2px solid var.$Light-grayish-blue;
-    @media (min-width: 550px) {
+    @media (min-width: 628px) {
         margin-inline-start: 3rem;
+    }
+}
+
+.comments-container__write-comment {
+    background-color: var.$White;
+    padding-block: clamp(1rem, 0.714rem + 1.429vw, 2rem);
+    padding-inline: clamp(1rem, 0.714rem + 1.429vw, 2rem);
+    border-radius: 8px;
+    
+    form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 2rem;
+        row-gap: 1rem;
+        @media (min-width: 628px) {
+            grid-template-columns: min-content 1fr min-content;
+        }
+        img {
+            max-width: 33px;
+            display: block;
+        }
+        #write-comment {
+            grid-row: 1/2;
+            grid-column: 1/-1;
+            width: 100%;
+            height: 6rem;
+            resize: none;
+            padding-block: 1rem;
+            padding-inline: 1rem;
+            color: var.$Grayish-Blue;
+            line-height: 1.5;
+            border-color: #eaecf1;
+            border-radius: 10px;
+            background-color: var.$White;
+            font-size: 1rem;
+            cursor: pointer;
+            &:focus {
+                outline: 1px solid var.$Grayish-Blue;
+            }
+            @media (min-width: 628px) {
+                grid-area: inherit;
+            }
+        }
+        .comment-btn {
+            all: unset;
+            background-color: var.$Moderate-blue;
+            font-weight: 500;
+            text-transform: uppercase;
+            border-radius: 8px;
+            color: var.$White;
+            text-align: center;
+            padding-block: 0.5rem;
+            padding-inline: 1.6rem;
+            height: 2rem;
+            justify-self: end;
+            cursor: pointer;
+            &:hover {
+                opacity: 0.6;
+            }
+            &:active {
+                opacity: .6;
+            }
+        }
     }
 }

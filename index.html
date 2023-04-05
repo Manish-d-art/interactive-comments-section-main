@@ -27,10 +27,10 @@
             <p class="vote">12</p>
             <button class="down-btn">-</button>
           </div>
-          <div class="comments-container__section__reply">
+          <div class="comments-container__section__replyNmodify">
             <button class="replyBtn">
               <img class="reply-logo" src="/src/assets/images/icon-reply.svg" alt="reply-logo">
-              Reply
+              reply
             </button>
           </div>
         </section>
@@ -54,10 +54,10 @@
             <p class="vote">12</p>
             <button class="down-btn">-</button>
           </div>
-          <div class="comments-container__section__reply">
+          <div class="comments-container__section__replyNmodify">
             <button class="replyBtn">
               <img class="reply-logo" src="/src/assets/images/icon-reply.svg" alt="reply-logo">
-              Reply
+              reply
             </button>
           </div>
         </section>
@@ -70,17 +70,17 @@
                 <p class="comments-container__user-time">1 week ago</p>
              </div>
              <p class="comments-container__section-content">
-              <span class="reply-to-name">maxblagun</span> you're still new, I'd recommend focusing on the fundamentals of HTML, CSS, and JS before considering React. It's very tempting to jump ahead but lay a solid foundation first.
+              <span class="reply-to-name">@maxblagun</span> you're still new, I'd recommend focusing on the fundamentals of HTML, CSS, and JS before considering React. It's very tempting to jump ahead but lay a solid foundation first.
              </p>
              <div class="comments-container__section__vote">
                 <button class="up-btn">+</button>
                 <p class="vote">12</p>
                 <button class="down-btn">-</button>
              </div>
-            <div class="comments-container__section__reply">
+            <div class="comments-container__section__replyNmodify">
               <button class="replyBtn">
                 <img class="reply-logo" src="/src/assets/images/icon-reply.svg" alt="reply-logo">
-                Reply
+                reply
               </button>
             </div>
             </section>
@@ -94,17 +94,21 @@
                 <p class="comments-container__user-time">2 days ago</p>
              </div>
              <p class="comments-container__section-content">
-              <span class="reply-to-name">ramsesmiron</span> I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant.
+              <span class="reply-to-name">@ramsesmiron</span> I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant.
              </p>
              <div class="comments-container__section__vote">
                 <button class="up-btn">+</button>
                 <p class="vote">12</p>
                 <button class="down-btn">-</button>
              </div>
-            <div class="comments-container__section__reply">
-              <button class="replyBtn">
-                <img class="reply-logo" src="/src/assets/images/icon-reply.svg" alt="reply-logo">
-                Reply
+            <div class="comments-container__section__replyNmodify">
+              <button class="delete-btn">
+                <img class="delete-icon" src="src/assets/images/icon-delete.svg" alt="delete-icon">
+                delete
+              </button>
+              <button class="edit-btn"> 
+                <img class="edit-icon" src="src/assets/images/icon-edit.svg" alt="edit-icon">
+                edit
               </button>
             </div>
             </section>
@@ -112,6 +116,15 @@
         </ul>
       </li> 
     </ul>
+    <section class="comments-container__write-comment">
+      <form>
+        <label for="write-comment">
+          <img class="writer-dp" src="/src/assets/images/avatars/image-juliusomo.png" alt="writer-dp">
+        </label>
+        <textarea name="comment" id="write-comment" placeholder="Add a comment..."></textarea>
+        <button class="comment-btn" type="submit">send</button>
+      </form>
+    </section>
   </main>
 
 </body>
