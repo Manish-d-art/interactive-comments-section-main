@@ -96,21 +96,24 @@ ul {
         }
         button {
             all: unset;
-            color: var.$Light-grayish-blue;
-            font-weight: 700;
             padding-block: .5rem;
             padding-inline: .8rem;
-            font-size: 1.3rem;
-            text-align: center;
             cursor: pointer;
             &:hover {
-                color: var.$Moderate-blue;
+                path {
+                        fill: var.$Moderate-blue;
+                    }
             }
             &:active {
-                color: var.$Moderate-blue;
+                path {
+                    fill: var.$Moderate-blue;
+                }
+            }
+            .minus-icon {
+                margin-block-start: .7rem;
             }
         }
-        .vote {
+        .score {
             color: var.$Moderate-blue;
             font-weight: 500;
             padding-block: .65rem;
@@ -145,6 +148,12 @@ ul {
             align-items: center;
             flex-wrap: wrap;
             justify-content: end;
+            &:hover {
+                opacity: .6;
+            }
+            &:active {
+                opacity: .6;
+            }
             .reply-logo {
                 width: 14px;
                 margin-inline-end: .2rem;
