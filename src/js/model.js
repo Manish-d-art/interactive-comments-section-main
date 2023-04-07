@@ -4,6 +4,13 @@ import ramsesmironDP from '/src/assets/images/avatars/image-ramsesmiron.png';
 import juiliusomoDP from '/src/assets/images/avatars/image-juliusomo.png';
 
 export const state = {
+	currentUser: {
+		image: {
+			png: juiliusomoDP,
+		},
+		username: 'juliusomo',
+	},
+
 	comments: [
 		{
 			content:

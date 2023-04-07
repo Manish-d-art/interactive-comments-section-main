@@ -1,8 +1,6 @@
 import replyIcon from '/src/assets/images/icon-reply.svg';
 import deleteIcon from '/src/assets/images/icon-delete.svg';
 import editIcon from '/src/assets/images/icon-edit.svg';
-import plusIcon from '/src/assets/images/icon-plus.svg';
-import minusIcon from '/src/assets/images/icon-minus.svg';
 
 class CommentsView {
 	_data;
@@ -11,9 +9,8 @@ class CommentsView {
 
 	render(data) {
 		this._data = data;
-		console.log(this._data);
+		// console.log(this._data);
 		const commentMarkUp = this._generateMarkUp();
-		// console.log(commentMarkUp);
 		this.parentCommentEle.insertAdjacentHTML('beforeend', commentMarkUp);
 	}
 
@@ -22,7 +19,7 @@ class CommentsView {
 	}
 
 	_commentsMarkUp(_data) {
-		console.log(_data.replies);
+		// console.log(_data.replies);
 		return `
 		    <li>
 		    <section class="comments-container__section">
@@ -64,12 +61,20 @@ class CommentsView {
                <li>
                    <section class="main__replies">
                      <div class="comments-container__user">
-                       <img class="comments-container__user-dp" src="${reply.user.image.png}" alt="user-dp">
-                       <p class="comments-container__user-name">${reply.user.username}</p>
-                       <p class="comments-container__user-time">${reply.createdAt}</p>
+                       <img class="comments-container__user-dp" src="${
+													reply.user.image.png
+												}" alt="user-dp">
+                       <p class="comments-container__user-name">${
+													reply.user.username
+												}</p>
+                       <p class="comments-container__user-time">${
+													reply.createdAt
+												}</p>
                     </div>
                     <p class="comments-container__section-content">
-                     <span class="reply-to-name">@${reply.replyingTo}</span> ${reply.content}
+                     <span class="reply-to-name">@${reply.replyingTo}</span> ${
+												reply.content
+											}
                     </p>
                     <div class="comments-container__section__vote">
                         <button class="plus-btn">
@@ -85,10 +90,26 @@ class CommentsView {
                         </button>
                     </div>
                    <div class="comments-container__section__replyNmodify">
-                     <button class="replyBtn">
-                       <img class="reply-logo" src="${replyIcon}" alt="reply-logo">
-                       reply
-                     </button>
+                   ${
+											reply.user.username === 'juliusomo'
+												? `
+                      <button class="delete-btn">
+                        <img class="delete-icon" src="${deleteIcon}" alt="delete-icon">
+                        delete
+                      </button>
+                      <button class="edit-btn"> 
+                        <img class="edit-icon" src="${editIcon}" alt="edit-icon">
+                        edit
+                      </button>
+                   `
+												: `
+                      <button class="replyBtn">
+                          <img class="reply-logo" src="${replyIcon}" alt="reply-logo">
+                          reply
+                      </button>
+                   `
+										}
+                     
                    </div>
                    </section>
                  </li>
