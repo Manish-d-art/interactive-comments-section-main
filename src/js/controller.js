@@ -7,21 +7,21 @@ const controlInitialComments = () => {
 	const { comments } = model.state;
 	commentsView.render(comments);
 };
-const controlReply = () => {
-	console.log(123);
+
+const controlAddReplyMarkUp = (container) => {
+	const { currentUser } = model.state;
+	addReplyView.render({ currentUser, container });
 };
 
 const controlAddComment = () => {
-	const currentUser = model.state.currentUser;
-	console.log(currentUser);
+	const { currentUser } = model.state;
 	const comment = addCommentView.getComment();
-	console.log(comment);
 	addCommentView.render({ currentUser, comment });
 };
 
 const init = function () {
 	controlInitialComments();
 	addCommentView.addHandlerComment(controlAddComment);
-	addReplyView.addHandlerReplyClick(controlReply);
+	addReplyView.addHandlerReplyClick(controlAddReplyMarkUp);
 };
 init();

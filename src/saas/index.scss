@@ -27,7 +27,7 @@ header {
 ul {
     li {
         list-style-type: none;
-        margin-block: clamp(1rem, 0.921rem + 0.421vw, 1.3rem);
+        margin-block-start: clamp(1rem, 0.921rem + 0.421vw, 1.3rem);
     }
 }
 
@@ -182,7 +182,7 @@ ul {
     padding-block: clamp(1rem, 0.714rem + 1.429vw, 2rem);
     padding-inline: clamp(1rem, 0.714rem + 1.429vw, 2rem);
     border-radius: 8px;
-    
+    margin-block-start: clamp(1rem, 0.921rem + 0.421vw, 1.3rem);
     form {
         display: grid;
         grid-template-columns: 1fr 1fr;
