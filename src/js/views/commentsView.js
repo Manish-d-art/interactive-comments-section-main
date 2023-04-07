@@ -21,7 +21,7 @@ class CommentsView {
 	_commentsMarkUp(_data) {
 		// console.log(_data.replies);
 		return `
-		    <li>
+		    <li class="comments-container__list">
 		    <section class="comments-container__section">
 		      <div class="comments-container__user">
 		        <img class="comments-container__user-dp" src="${
@@ -58,7 +58,7 @@ class CommentsView {
 									.map(
 										(reply) =>
 											`
-               <li>
+               <li class="main__replies-list">
                    <section class="main__replies">
                      <div class="comments-container__user">
                        <img class="comments-container__user-dp" src="${
