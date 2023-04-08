@@ -1,6 +1,7 @@
 import * as model from './model.js';
 import commentsView from './views/commentsView.js';
 import addCommentView from './views/addCommentView.js';
+import replyTextareaView from './views/replyTextareaView.js';
 import addReplyView from './views/addReplyView.js';
 
 const controlInitialComments = () => {
@@ -8,20 +9,28 @@ const controlInitialComments = () => {
 	commentsView.render(comments);
 };
 
-const controlAddReplyMarkUp = (container) => {
+const controlAddReplyMarkUp = () => {
 	const { currentUser } = model.state;
-	addReplyView.render({ currentUser, container });
+	replyTextareaView.render(currentUser);
 };
 
 const controlAddComment = () => {
 	const { currentUser } = model.state;
-	const comment = addCommentView.getComment();
-	addCommentView.render({ currentUser, comment });
+	const comment = addCommentView.getCommentText();
+	comment && addCommentView.render({ currentUser, comment });
+};
+
+const controlAddReply = () => {
+	const { currentUser } = model.state;
+	const comment = addReplyView.getCommentText();
+	comment && addReplyView.render({ currentUser, comment });
+	addReplyView.removeTextarea();
 };
 
 const init = function () {
 	controlInitialComments();
 	addCommentView.addHandlerComment(controlAddComment);
-	addReplyView.addHandlerReplyClick(controlAddReplyMarkUp);
+	replyTextareaView.addHandlerReplyClick(controlAddReplyMarkUp);
+	addReplyView.addHandlerReply(controlAddReply);
 };
 init();
