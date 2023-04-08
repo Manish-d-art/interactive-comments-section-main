@@ -1,44 +1,23 @@
-class addReplyView {
-	_data;
-	_parentElement;
-	_body = document.querySelector('body');
+import View from './view.js';
 
-	render(data) {
-		this._data = data;
-		console.log(this._data);
-		const { currentUser, container } = this._data;
-		this._parentElement = container;
-		console.log(this._parentElement);
-		this.textareaMarkUp(currentUser);
-	}
+class addReplyView extends View {
+	body = document.querySelector('.comments-container');
+	parentElement;
+	textarea;
 
-	addHandlerReplyClick(handler) {
-		this._body.addEventListener('click', (e) => {
-			const replyBtn = e.target.closest('.replyBtn');
-			const replyContainer = e.target.closest('.main__replies-list');
-			const commentContainer = e.target.closest('.comments-container__section');
-			if (!replyBtn) return;
-			if (commentContainer) {
-				handler(commentContainer);
-				return;
-			}
-			replyContainer && handler(replyContainer);
+	addHandlerReply(handler) {
+		this.body.addEventListener('click', (e) => {
+			e.preventDefault();
+			const btn = e.target.closest('.comment-btn');
+			if (!btn) return;
+			this.textarea = e.target
+				.closest('.comments-container__write-comment')
+				.querySelector('.textarea-fieled');
+			this.parentElement = e.target
+				.closest('.comments-container__list')
+				.querySelector('.main__replies-container');
+			handler();
 		});
-	}
-
-	textareaMarkUp(currentUser) {
-		const markup = `
-		<section class="comments-container__write-comment">
-			<form class="form">
-				<label for="write-comment">
-				<img class="writer-dp" src="${currentUser.image.png}" alt="writer-dp">
-				</label>
-				<textarea type="text" name="comment" class="textarea-filed" id="write-comment" placeholder="Add a comment..."></textarea>
-				<button class="comment-btn" type="submit">send</button>
-			</form>
-    	</section>
-		`;
-		this._parentElement.insertAdjacentHTML('afterEnd', markup);
 	}
 }
 
