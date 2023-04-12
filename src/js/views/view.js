@@ -3,6 +3,7 @@ import editIcon from '/src/assets/images/icon-edit.svg';
 
 export default class View {
 	replyTextareaEle;
+	body = document.querySelector('body');
 
 	render(data) {
 		this.data = data;
@@ -22,7 +23,7 @@ export default class View {
 			.querySelector('.comments-container__write-comment');
 		if (this.replyTextareaEle) {
 			this.replyTextareaEle.remove();
-			return true;
+			// return true;
 		}
 	}
 
@@ -56,6 +57,24 @@ export default class View {
         </section>
       </li>
         `;
-		this.parentElement.insertAdjacentHTML('beforeend', markup);
+
+		this.parentElement.classList.contains('comments-container')
+			? this.parentElement.insertAdjacentHTML('beforeend', markup)
+			: this.parentElement.insertAdjacentHTML('afterend', markup);
+	}
+
+	textareaMarkUp(currentUser) {
+		const markup = `
+		<section class="comments-container__write-comment">
+			<form class="form">
+				<label for="write-comment">
+				<img class="writer-dp" src="${currentUser.image.png}" alt="writer-dp">
+				</label>
+				<textarea type="text" name="comment" class="textarea-fieled" id="write-comment" placeholder="Add a comment..." autofocus></textarea>
+				<button class="comment-btn" type="submit">reply</button>
+			</form>
+    	</section>
+		`;
+		this.parentElement.insertAdjacentHTML('afterEnd', markup);
 	}
 }
