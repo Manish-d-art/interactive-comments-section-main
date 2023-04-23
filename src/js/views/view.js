@@ -32,7 +32,7 @@ export default class View {
         <li>
         <section class="main__replies main__replies-user">
           <div class="comments-container__user">
-            <img class="comments-container__user-dp" src="${currentUser.image.png}" alt="user-dp">
+            <img class="comments-container__user-dp" src="${currentUser.image.png}" alt="user-image">
             <p class="comments-container__user-name">juliusomo</p>
             <p class="comments-container__user-time">2 days ago</p>
          </div>
