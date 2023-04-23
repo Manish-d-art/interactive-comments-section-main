@@ -33,6 +33,10 @@ ul {
     }
 }
 
+// .comments-container, .comments-container__write-comment {
+//     display: none;
+// }
+
 .comments-container__section, .main__replies {
     padding-block: clamp(1rem, 0.714rem + 1.429vw, 2rem);
     padding-inline: clamp(1rem, 0.714rem + 1.429vw, 2rem);

@@ -25,8 +25,6 @@ class addReplyTextareaView extends View {
 				return;
 			}
 
-			// this.removeTextarea();
-
 			commentContainer && this._setContainer(commentContainer) && handler();
 			replyContainer && this._setContainer(replyContainer) && handler();
 		});
@@ -39,25 +37,6 @@ class addReplyTextareaView extends View {
 
 		Alltextarea.forEach((t) => t.remove());
 	}
-
-	// removeActiveBtns() {
-	// 	const btns = document.querySelectorAll('.replyBtn');
-	// 	btns.forEach((btn) => btn.classList.remove('replyBtn--active'));
-	// }
-
-	// _toggleActiveBtns(replyBtn) {
-	// 	if (replyBtn.classList.contains('replyBtn--active'))
-	// 		replyBtn.classList.remove('replyBtn--active');
-	// 	else replyBtn.classList.add('replyBtn--active');
-
-	// 	console.log('ues');
-	// }
-
-	// _isTextareaRemovedAndReplyBtnActive(replyBtn) {
-	// 	return (
-	// 		this.removeTextarea() && replyBtn.classList.contains('replyBtn--active')
-	// 	);
-	// }
 
 	_setContainer(container) {
 		this.parentElement = container;

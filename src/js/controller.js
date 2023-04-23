@@ -5,7 +5,7 @@ import replyTextareaView from './views/replyTextareaView.js';
 import addReplyView from './views/addReplyView.js';
 import deleteCommentView from './views/deleteCommentView.js';
 import scoreView from './views/scoreView.js';
-import editCommentView from './views/editCommentView.js';
+// import editCommentView from './views/editCommentView.js';
 
 const controlInitialComments = () => {
 	const { comments } = model.state;
@@ -38,11 +38,10 @@ const controlScore = () => {
 	scoreView.updateScore();
 };
 
-const controlEditComment = () => {
-	console.log(123);
-	const { currentUser } = model.state;
-	editCommentView.render(currentUser);
-};
+// const controlEditComment = () => {
+// 	const { currentUser } = model.state;
+// 	editCommentView.render(currentUser);
+// };
 
 const init = function () {
 	controlInitialComments();
@@ -51,6 +50,6 @@ const init = function () {
 	addReplyView.addHandlerReply(controlAddReply);
 	deleteCommentView.addHandlerDelete(controlDeleteComment);
 	scoreView.addHandlerClick(controlScore);
-	editCommentView.addHandlerEdit(controlEditComment);
+	// editCommentView.addHandlerEdit(controlEditComment);
 };
 init();
