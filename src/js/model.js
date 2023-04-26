@@ -11,6 +11,10 @@ export const state = {
 		username: 'juliusomo',
 	},
 
+	replyToUser: {
+		replyToUsername: '',
+	},
+
 	comments: [
 		{
 			content:

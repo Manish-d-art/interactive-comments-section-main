@@ -12,9 +12,10 @@ const controlInitialComments = () => {
 	commentsView.render(comments);
 };
 
-const controlAddReplyMarkUp = () => {
+const controlTextareaMarkUp = (replyToUsername) => {
 	const { currentUser } = model.state;
-	replyTextareaView.render(currentUser);
+	model.state.replyToUser.replyToUsername = replyToUsername;
+	replyTextareaView.render({ currentUser, replyToUsername });
 };
 
 const controlAddComment = () => {
@@ -25,8 +26,12 @@ const controlAddComment = () => {
 
 const controlAddReply = () => {
 	const { currentUser } = model.state;
-	const comment = addReplyView.getCommentText();
-	comment && addReplyView.render({ currentUser, comment });
+	let comment = addReplyView.getCommentText().split(' ');
+	console.log(comment);
+	if (comment.length === 1) return;
+	const { replyToUsername } = model.state.replyToUser;
+	comment = comment.slice(1).join(' ');
+	comment && addReplyView.render({ currentUser, comment, replyToUsername });
 	addReplyView.removeTextarea();
 };
 
@@ -46,7 +51,7 @@ const controlScore = () => {
 const init = function () {
 	controlInitialComments();
 	addCommentView.addHandlerComment(controlAddComment);
-	replyTextareaView.addHandlerReplyClick(controlAddReplyMarkUp);
+	replyTextareaView.addHandlerReplyClick(controlTextareaMarkUp);
 	addReplyView.addHandlerReply(controlAddReply);
 	deleteCommentView.addHandlerDelete(controlDeleteComment);
 	scoreView.addHandlerClick(controlScore);

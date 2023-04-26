@@ -7,7 +7,7 @@ export default class View {
 
 	render(data) {
 		this.data = data;
-		// console.log(this.data);
+		console.log(this.data);
 		const { comment, currentUser } = this.data;
 		this.commentAndReplyMarkUp(currentUser, comment);
 		this.textarea.value = '';
@@ -32,11 +32,18 @@ export default class View {
         <li>
         <section class="main__replies main__replies-user">
           <div class="comments-container__user">
-            <img class="comments-container__user-dp" src="${currentUser.image.png}" alt="user-image">
+            <img class="comments-container__user-dp" src="${
+							currentUser.image.png
+						}" alt="user-image">
             <p class="comments-container__user-name">juliusomo</p>
             <p class="comments-container__user-time">2 days ago</p>
          </div>
          <p class="comments-container__section-content">
+		 ${
+				this.data.replyToUsername
+					? `<span class="reply-to-name">@${this.data.replyToUsername}</span>`
+					: ''
+			}
             ${comment}
          </p>
          <div class="comments-container__section__vote">
@@ -72,14 +79,16 @@ export default class View {
 			: this.parentElement.insertAdjacentHTML('beforeend', markup);
 	}
 
-	textareaMarkUp(currentUser) {
+	textareaMarkUp(currentUser, replyToUsername) {
 		const markup = `
 		<section class="comments-container__write-comment">
 			<form class="form">
 				<label for="write-comment">
 				<img class="writer-dp" src="${currentUser.image.png}" alt="writer-dp">
 				</label>
-				<textarea type="text" name="comment" class="textarea-fieled" id="write-comment" placeholder="Add a comment..." autofocus></textarea>
+				<textarea type="text" name="comment" class="textarea-fieled" id="write-comment" placeholder="Add a comment..." required>@${
+					replyToUsername + ' '
+				}</textarea>
 				<button class="comment-btn" type="submit" aria-label="comment">reply</button>
 			</form>
     	</section>
