@@ -29,6 +29,7 @@ class ScoreView extends View {
 	updateScore() {
 		let scoreValue = +this._score.textContent;
 		if (this._plusBtn) scoreValue += 1;
+		if (scoreValue === 0) return;
 		if (this._minusBtn) scoreValue -= 1;
 		this._score.textContent = scoreValue;
 	}
