@@ -15,6 +15,7 @@ class DeleteCommentView extends View {
 		this.body.addEventListener('click', (e) => {
 			const btn = e.target.closest('.delete-btn');
 			if (!btn) return;
+			btn.classList.add('delete-btn--active');
 			this.removeEle = e.target.closest('.main__replies');
 			this.deleteBtn = btn;
 			handler();
@@ -22,17 +23,21 @@ class DeleteCommentView extends View {
 	}
 
 	deleteComment() {
-		document
-			.querySelector('.delete-button')
-			.addEventListener('click', () => this.removeEle.remove());
+		document.querySelector('.delete-button').addEventListener('click', () => {
+			this.removeEle.remove();
+			this.removeBtnActive();
+		});
+	}
+
+	removeBtnActive() {
+		this.deleteBtn.classList.remove('delete-btn--active');
 	}
 
 	cancelDeleteComment() {
-		document
-			.querySelector('.cancel-button')
-			.addEventListener('click', () =>
-				document.querySelector('.comment-delete-section').remove()
-			);
+		document.querySelector('.cancel-button').addEventListener('click', () => {
+			document.querySelector('.comment-delete-section').remove();
+			this.removeBtnActive();
+		});
 	}
 
 	_generateDeleteMarkUp() {
