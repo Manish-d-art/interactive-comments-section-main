@@ -7,7 +7,6 @@ class addReplyTextareaView extends View {
 	render(data) {
 		this._data = data;
 		console.log(this._data);
-		// const currentUser = this._data;
 		const { currentUser, replyToUsername } = this._data;
 		this.textareaMarkUp(currentUser, replyToUsername);
 		this._focusTextarea();
