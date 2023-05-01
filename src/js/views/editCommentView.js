@@ -9,44 +9,47 @@ class EditCommentView extends View {
 
 	render(data) {
 		this._data = data;
-		console.log(this._data);
-		const currentUser = this._data;
-		if (this.removeTextarea()) return;
-		this.textareaMarkUp(currentUser);
+		// console.log(this._data);
+		const { currentUser, comment, replyToUsername } = this._data;
+		console.log(replyToUsername);
+		this.textareaMarkUp(currentUser, replyToUsername, comment);
+		this.parentElement.remove();
 	}
 
 	addHandlerEdit(handler) {
 		this.body.addEventListener('click', (e) => {
 			const editBtn = e.target.closest('.edit-btn');
 			if (!editBtn) return;
-
-			this.parentElement = e.target.closest('.main__replies');
-			this.textarea = this.parentElement.querySelector(
-				'.comments-container__section-content'
-			);
-			this._setCommentText(this.textarea);
-			handler();
+			this._setText(e);
+			if (e.target.closest('.main__replies-container')) {
+				this.parentElement = e.target.closest('.main__replies');
+				handler();
+				return;
+			}
+			handler(this.text);
+			// this.textarea = this.parentElement.querySelector(
+			// 	'.comments-container__section-content'
+			// );
+			// this._setCommentText(this.textarea);
+			// console.log(this.parentElement);
+			// console.log(this.textarea);
 		});
 	}
 
-	_setCommentText(textarea) {
-		this.text = this.textarea.textContent.trim();
+	getReplyUsername() {
+		return this.text.split(' ').slice(0, 1).join('').slice(1);
+	}
+
+	_setText(e) {
+		this.text = e.target
+			.closest('.main__replies')
+			.querySelector('.comments-container__section-content')
+			.textContent.trim();
 		console.log(this.text);
 	}
 
-	// textareaMarkUp(currentUser) {
-	// 	const markup = `
-	// 	<section class="comments-container__write-comment">
-	// 		<form class="form">
-	// 			<label for="write-comment">
-	// 			<img class="writer-dp" src="${currentUser.image.png}" alt="writer-dp">
-	// 			</label>
-	// 			<textarea type="text" name="comment" class="textarea-fieled" id="write-comment" placeholder="Add a comment..." autofocus></textarea>
-	// 			<button class="comment-btn" type="submit">reply</button>
-	// 		</form>
-	// 	</section>
-	// 	`;
-	// 	this._parentElement.insertAdjacentHTML('afterEnd', markup);
-	// }
+	getText() {
+		return this.text.split(' ').slice(1).join(' ');
+	}
 }
 export default new EditCommentView();
